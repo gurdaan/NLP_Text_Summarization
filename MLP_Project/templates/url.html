@@ -92,6 +92,7 @@
       showLoading();
       const p_text = document.querySelector('#parsedText').textContent;
       const data = { 'p_text': p_text };
+
       fetch('/url', {
         method: 'POST',
         headers: {
@@ -100,6 +101,7 @@
         },
         body: JSON.stringify(data)
       })
+      
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);

@@ -6,6 +6,10 @@ from WebsiteTextParser import TextParser
 from SummarizingModel import summarizer
 import json
 from django.http import JsonResponse
+from PIL import Image
+import pytesseract
+import requests
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -13,7 +17,13 @@ def index(request):
     context={
         'variable':"Gurdaan Walia "
     }
-    return render(request,'index.html',context)
+    api_key = 'd099fc71486e4affa401d6a290b63631'
+    url = 'https://newsapi.org/v2/top-headlines'
+    params = {'country': 'us', 'apiKey': api_key}
+    response = requests.get(url, params=params)
+    data = response.json()
+    return render(request, 'index.html', {'data': data})
+    #return render(request,'index.html',context)
 
 def url(request):
         
@@ -57,7 +67,11 @@ def contactUs(request):
     return render(request,'contactUS.html')
 
 def textFromImage(request):
+    if request.method == 'POST':
+        image = request.FILES['image']
+        if request.method == 'POST':
+            image = Image.open(image)
+            text = pytesseract.image_to_string(image)
+        print("AtBAckEnd")
+        return JsonResponse({'data': 'text'})
     return render(request,'textFromImage.html')
-
-
-    #return HttpResponse("This is a ContactUs string")
