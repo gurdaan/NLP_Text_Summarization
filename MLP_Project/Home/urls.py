@@ -8,5 +8,7 @@ urlpatterns = [
     path('text',views.text,name='Text'),
     path('fileUpload',views.fileUpload,name='FileUpload'),
     path('textFromImage',views.textFromImage,name='textFromImage'),
-    path('contact',views.contactUs,name='contact')
+    path('contact',views.contactUs,name='contact'),
+    path('signup',views.signup,name='signup'),
+    path('login',views.login,name='login')
 ]

@@ -75,3 +75,9 @@ def textFromImage(request):
         print("AtBAckEnd")
         return JsonResponse({'data': 'text'})
     return render(request,'textFromImage.html')
+
+def signup(request):
+    return render(request,'signup.html')
+
+def login(request):
+    return render(request,'login.html')

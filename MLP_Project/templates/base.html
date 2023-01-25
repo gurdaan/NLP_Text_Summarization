@@ -43,11 +43,9 @@
               </li>
 
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            
+      
+            <button class="btn btn-outline-success" type="submit" id='login'>Signup/Login</button>
+
           </div>
         </div>
       </nav>
@@ -56,5 +54,10 @@
     {% block content %}{% endblock content %}
   </p>
  </div>
+ <script>
+  document.getElementById("login").addEventListener("click", function(){
+    window.location.href = "http://127.0.0.1:8000/login";
+  });
+</script>
     </body>
 </html>
