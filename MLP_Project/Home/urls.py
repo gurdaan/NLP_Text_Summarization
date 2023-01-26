@@ -10,5 +10,8 @@ urlpatterns = [
     path('textFromImage',views.textFromImage,name='textFromImage'),
     path('contact',views.contactUs,name='contact'),
     path('signup',views.signup,name='signup'),
-    path('login',views.login,name='login')
+    path('login',views.login,name='login'),
+    path('loginlogoutbutton',views.loginlogoutbutton,name='loginlogoutbutton'),
+    path('registeration',views.registeration,name='registeration')
+
 ]

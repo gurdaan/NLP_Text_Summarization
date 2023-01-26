@@ -10,6 +10,9 @@ from PIL import Image
 import pytesseract
 import requests
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -80,4 +83,45 @@ def signup(request):
     return render(request,'signup.html')
 
 def login(request):
+    username=request.POST.get('username')
+    password=request.POST.get('password')
+    print(f"Username:{username}")
+    print(f"Password:{password}")
+    user=authenticate(username=username,password=password)
+    print(user)
+    if user is not None:
+        return render(request,'index.html',{'user':user})
     return render(request,'login.html')
+
+def loginlogoutbutton(request):
+    if request.method == 'POST':
+        # Handle button click
+        if 'loginbutton' in request.POST:
+            # Do something when button1 is clicked
+            print("Login")
+            return render(request,'login.html')
+        else:
+            # Do something when button2 is clicked
+            logout(request)
+            return render(request,'index.html')
+
+def registeration(request):
+    if request.method=='POST':
+        print("Inside Registeration")
+        username=request.POST.get('username')
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        print("username :",username)
+        print("Password :",password)
+        print("Email :",email)
+        # Create a new user
+        user = User.objects.create_user(username=username,
+                                email=email,
+                                password=password)
+        return render(request,'login.html')
+        # Save the user to the database
+        user.save()
+    return render(request,'registeration.html')
+
+
+    

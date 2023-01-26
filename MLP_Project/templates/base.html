@@ -38,14 +38,25 @@
                 <a class="nav-link" href="textFromImage">TextFromImage</a>
               </li>
 
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="/index">Summary History</a>
+             </li>
+              {% endif %}
+
               <li class="nav-item">
                 <a class="nav-link" href="contact">Contact</a>
               </li>
 
             </ul>
-      
-            <button class="btn btn-outline-success" type="submit" id='login'>Signup/Login</button>
-
+            <form method='post' action='/loginlogoutbutton'>
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            <button class="btn btn-outline-success" type="submit" id='logout' name='logoutbutton'>Logout</button>
+            {%else%}
+            <button class="btn btn-outline-success" type="submit" id='login' name='loginbutton'>Login</button>
+            {% endif%}
+            </form>
           </div>
         </div>
       </nav>
@@ -54,10 +65,5 @@
     {% block content %}{% endblock content %}
   </p>
  </div>
- <script>
-  document.getElementById("login").addEventListener("click", function(){
-    window.location.href = "http://127.0.0.1:8000/login";
-  });
-</script>
     </body>
 </html>
