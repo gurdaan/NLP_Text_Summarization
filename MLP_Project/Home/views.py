@@ -123,5 +123,8 @@ def registeration(request):
         user.save()
     return render(request,'registeration.html')
 
+def summaryhistory(request):
+    return render(request,'summaryhistory.html')
+
 
     

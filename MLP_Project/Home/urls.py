@@ -12,6 +12,7 @@ urlpatterns = [
     path('signup',views.signup,name='signup'),
     path('login',views.login,name='login'),
     path('loginlogoutbutton',views.loginlogoutbutton,name='loginlogoutbutton'),
-    path('registeration',views.registeration,name='registeration')
+    path('registeration',views.registeration,name='registeration'),
+    path('summaryhistory',views.summaryhistory,name='summaryhistory')
 
 ]
